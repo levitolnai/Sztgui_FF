@@ -22,6 +22,11 @@ namespace D8M7Q2_Sztgui_FF.Models
             get => grade;
             set { grade = value; OnPropertyChanged(nameof(Grade)); }
         }
+        public Subject(string name, int grade)
+        {
+            Name = name;
+            Grade = grade;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

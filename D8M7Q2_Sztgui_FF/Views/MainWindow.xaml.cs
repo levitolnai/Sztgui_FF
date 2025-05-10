@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using D8M7Q2_Sztgui_FF.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,12 @@ namespace D8M7Q2_Sztgui_FF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
+        }
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

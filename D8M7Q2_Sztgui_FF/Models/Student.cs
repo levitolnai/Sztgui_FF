@@ -13,8 +13,10 @@ namespace D8M7Q2_Sztgui_FF.Models
         private string id;
         private string firstName;
         private string lastName;
-        private ObservableCollection<Subject> subjects;
+        private string className;
+        private BindingList<Subject> subjects;
 
+        
         public string Id
         {
             get => id;
@@ -30,18 +32,25 @@ namespace D8M7Q2_Sztgui_FF.Models
             get => lastName;
             set { lastName = value; OnPropertyChanged(nameof(LastName)); }
         }
-        public ObservableCollection<Subject> Subjects
+        public string ClassName
+        {
+            get => className;
+            set { className = value; OnPropertyChanged(nameof(ClassName)); }
+        }
+        public BindingList<Subject> Subjects
         {
             get => subjects;
             set { subjects = value; OnPropertyChanged(nameof(Subjects)); }
         }
-        public Student(string firstName, string lastName)
+        public Student(string firstName, string lastName, string className, BindingList<Subject> list)
         {
             Id = Guid.NewGuid().ToString();
             FirstName = firstName;
             LastName = lastName;
-            Subjects = new ObservableCollection<Subject>();
+            ClassName = className;
+            Subjects = list;
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
