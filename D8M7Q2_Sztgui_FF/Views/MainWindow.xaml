@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:D8M7Q2_Sztgui_FF"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1400">
-    
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -20,7 +19,7 @@
                 ItemsSource="{Binding ClassNames}" 
                 SelectedItem="{Binding SelectedClassName, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
 
-            <ListBox x:Name="FilteredStudentsListBox" 
+            <ListBox x:Name="FilteredStudentsListBox" Height="500"
                ItemsSource="{Binding FilteredStudents}" HorizontalContentAlignment="Stretch" Margin="0,50,0,0">
                <ListBox.ItemContainerStyle>
                    <Style TargetType="ListBoxItem">
@@ -37,7 +36,7 @@
                                <ColumnDefinition Width="Auto" />
                            </Grid.ColumnDefinitions>
                            <Label Content="{Binding FullName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Grid.Column="0"/>
-                           <Label Content="{Binding ClassName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="20" Grid.Column="1"/>
+                            <TextBlock Text="{Binding ClassName, StringFormat='{}Class: {0}'}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Grid.Column="1"/>
                        </Grid>
                    </DataTemplate>
                </ListBox.ItemTemplate>

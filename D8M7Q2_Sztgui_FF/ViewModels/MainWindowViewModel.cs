@@ -52,13 +52,22 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
         }
         public MainWindowViewModel()
         {
-            Students = new ObservableCollection<Student>();
-            Students.Add(new Student("John", "Doe", "1", new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 4, 3) }));
-            Students.Add(new Student("Jane", "Smith", "2", new BindingList<Subject> { new Subject("Math", 3, 3), new Subject("English", 5, 3) }));
-            Students.Add(new Student("Alice", "Johnson", "2", new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 3, 3) }));
-            Students.Add(new Student("Bob", "Brown", "4", new BindingList<Subject> { new Subject("Math", 2, 3), new Subject("English", 4, 3) }));
-            Students.Add(new Student("Charlie", "Davis", "8", new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 5, 3) }));
-            Students.Add(new Student("David", "Wilson", "8", new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 2, 3) }));
+            Students = new ObservableCollection<Student>()
+            {
+            new Student() { ClassName = "1", FirstName = "John", LastName = "Doe", Subjects = new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 4, 3) } },
+            new Student() { ClassName = "2", FirstName = "Jane", LastName = "Smith", Subjects = new BindingList<Subject> { new Subject("Math", 3, 3), new Subject("English", 5, 3) } },
+            new Student() { ClassName = "2", FirstName = "Alice", LastName = "Johnson", Subjects = new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 3, 3) } },
+            new Student() { ClassName = "4", FirstName = "Bob", LastName = "Brown", Subjects = new BindingList<Subject> { new Subject("Math", 2, 3), new Subject("English", 4, 3) } },
+            new Student() { ClassName = "8", FirstName = "Charlie", LastName = "Davis", Subjects = new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 5, 3) } },
+            new Student() { ClassName = "8", FirstName = "David", LastName = "Wilson", Subjects = new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 2, 3) } },
+            };
+            //Students = new ObservableCollection<Student>();
+            //Students.Add(new Student("John", "Doe", "1", new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 4, 3) }));
+            //Students.Add(new Student("Jane", "Smith", "2", new BindingList<Subject> { new Subject("Math", 3, 3), new Subject("English", 5, 3) }));
+            //Students.Add(new Student("Alice", "Johnson", "2", new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 3, 3) }));
+            //Students.Add(new Student("Bob", "Brown", "4", new BindingList<Subject> { new Subject("Math", 2, 3), new Subject("English", 4, 3) }));
+            //Students.Add(new Student("Charlie", "Davis", "8", new BindingList<Subject> { new Subject("Math", 5, 3), new Subject("English", 5, 3) }));
+            //Students.Add(new Student("David", "Wilson", "8", new BindingList<Subject> { new Subject("Math", 4, 3), new Subject("English", 2, 3) }));
 
             ClassNames = new ObservableCollection<string>
             {

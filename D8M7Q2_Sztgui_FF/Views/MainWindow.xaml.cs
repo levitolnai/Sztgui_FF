@@ -1,6 +1,7 @@
 ﻿using D8M7Q2_Sztgui_FF.Models;
 using D8M7Q2_Sztgui_FF.ViewModels;
 using D8M7Q2_Sztgui_FF.Views;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,14 +25,26 @@ namespace D8M7Q2_Sztgui_FF
 
         private void Add_student_click(object sender, RoutedEventArgs e)
         {
-            //Student newStudent = new Student();
+            Student newStud = new Student();
 
-            StudentDetailWindow editor = new StudentDetailWindow(/*newStudent*/);
+            StudentDetailWindow editor = new StudentDetailWindow(newStud);
+
+            if (editor.ShowDialog() == true && this.DataContext is MainWindowViewModel vm)
+            {
+                vm.AddStudent(newStud);
+                FilteredStudentsListBox.Items.Refresh();
+            }
+
+
+            //BindingList<Subject> defaultSubjects = new BindingList<Subject>();
+            //Student newStudent = new Student("DefaultFirstName", "DefaultLastName", "DefaultClassName", defaultSubjects);
+
+            //StudentDetailWindow editor = new StudentDetailWindow(newStudent);
 
             //if (editor.ShowDialog() == true && this.DataContext is MainWindowViewModel vm)
             //{
             //    vm.AddStudent(newStudent);
-            //    lbox_left.Items.Refresh();
+            //    FilteredStudentsListBox.Items.Refresh();
             //}
         }
     }
