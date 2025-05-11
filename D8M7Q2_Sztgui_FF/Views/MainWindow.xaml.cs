@@ -1,4 +1,6 @@
-﻿using D8M7Q2_Sztgui_FF.ViewModels;
+﻿using D8M7Q2_Sztgui_FF.Models;
+using D8M7Q2_Sztgui_FF.ViewModels;
+using D8M7Q2_Sztgui_FF.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace D8M7Q2_Sztgui_FF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -23,9 +22,17 @@ namespace D8M7Q2_Sztgui_FF
             DataContext = new MainWindowViewModel();
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void Add_student_click(object sender, RoutedEventArgs e)
         {
+            //Student newStudent = new Student();
 
+            StudentDetailWindow editor = new StudentDetailWindow(/*newStudent*/);
+
+            //if (editor.ShowDialog() == true && this.DataContext is MainWindowViewModel vm)
+            //{
+            //    vm.AddStudent(newStudent);
+            //    lbox_left.Items.Refresh();
+            //}
         }
     }
 }

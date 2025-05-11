@@ -10,22 +10,31 @@ namespace D8M7Q2_Sztgui_FF.Models
     public class Subject: INotifyPropertyChanged
     {
         private string name;
-        private int grade;
+        private int? firstSemester = null;
+        private int? secondSemester = null;
+
+
 
         public string Name
         {
             get => name;
             set { name = value; OnPropertyChanged(nameof(Name)); }
         }
-        public int Grade
+        public int? FirstSemester
         {
-            get => grade;
-            set { grade = value; OnPropertyChanged(nameof(Grade)); }
+            get => firstSemester;
+            set { firstSemester = value; OnPropertyChanged(nameof(FirstSemester)); }
         }
-        public Subject(string name, int grade)
+        public int? SecondSemester
+        {
+            get => secondSemester;
+            set { secondSemester = value; OnPropertyChanged(nameof(SecondSemester)); } 
+        }
+        public Subject(string name, int firstSemester, int secondSemester)
         {
             Name = name;
-            Grade = grade;
+            FirstSemester = firstSemester;
+            SecondSemester = secondSemester;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
