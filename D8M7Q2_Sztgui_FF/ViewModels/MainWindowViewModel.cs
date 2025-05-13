@@ -26,6 +26,16 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 OnPropertyChanged();
             }
         }
+        private Subject _selectedSubject;
+        public Subject SelectedSubject
+        {
+            get => _selectedSubject;
+            set
+            {
+                _selectedSubject = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string _selectedClassName;
         private ObservableCollection<Student> _students;
@@ -124,6 +134,36 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             {
                 Students.Remove(student);
                 FilteredStudents.Refresh();
+            }
+        }
+
+        public void AddSubject()
+        {
+            if (SelectedStudent == null)
+            {
+                MessageBox.Show("Please select a student before adding a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            SubjectWindow subjectWindow = new SubjectWindow();
+            if (subjectWindow.ShowDialog() == true)
+            {
+                if (subjectWindow.NewSubject != null)
+                {
+                    SelectedStudent.Subjects.Add(subjectWindow.NewSubject);
+                }
+            }
+        }
+
+        public void DeleteSubject()
+        {
+            if (SelectedStudent != null && SelectedSubject != null)
+            {
+                SelectedStudent.Subjects.Remove(SelectedSubject);
+            }
+            else
+            {
+                MessageBox.Show("Please select a subject to delete.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

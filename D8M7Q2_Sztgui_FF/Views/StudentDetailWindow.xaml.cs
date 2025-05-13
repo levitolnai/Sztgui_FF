@@ -17,12 +17,9 @@ using System.Windows.Shapes;
 
 namespace D8M7Q2_Sztgui_FF.Views
 {
-    /// <summary>
-    /// Interaction logic for StudentDetailWindow.xaml
-    /// </summary>
     public partial class StudentDetailWindow : Window
     {
-        public ObservableCollection<string> ClassNames { get; set; }
+        //public ObservableCollection<string> ClassNames { get; set; }
         public StudentDetailWindow(Student student)
         {
             InitializeComponent();

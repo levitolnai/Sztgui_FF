@@ -58,5 +58,21 @@ namespace D8M7Q2_Sztgui_FF
                 vm.DeleteStudent(selectedStudent);
             }
         }
+
+        private void Add_subject_click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Edit_subject_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_subject_click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainWindowViewModel;
+            viewModel?.DeleteSubject();
+        }
     }
 }

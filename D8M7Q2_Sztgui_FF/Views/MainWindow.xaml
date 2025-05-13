@@ -71,20 +71,31 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Student's subjects" FontSize="18">
-                <StackPanel>
-                    <DataGrid ItemsSource="{Binding SelectedStudent.Subjects}" 
-                        AutoGenerateColumns="False" 
-                        HorizontalAlignment="Left"
-                        Grid.Column="1" 
-                        Margin="10" FontSize="18">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Subject Name" Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="First Semester Grade" Binding="{Binding FirstSemester}" />
-                            <DataGridTextColumn Header="Second Semester Grade" Binding="{Binding SecondSemester}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </StackPanel>
-
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <DataGrid ItemsSource="{Binding SelectedStudent.Subjects}" 
+                            AutoGenerateColumns="False" 
+                            HorizontalAlignment="Left"
+                            SelectedItem="{Binding SelectedSubject, Mode=TwoWay}"
+                            Grid.Column="1" 
+                            Margin="10" FontSize="18">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Subject Name" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="First Semester Grade" Binding="{Binding FirstSemester}" />
+                                <DataGridTextColumn Header="Second Semester Grade" Binding="{Binding SecondSemester}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Button Content="Add subject" Width="120" Height="25" Margin="5" FontSize="16" VerticalContentAlignment="Center" Click="Add_subject_click"/>
+                        <Button Content="Edit subject" Width="120" Height="25" Margin="5" FontSize="16" VerticalContentAlignment="Center" Click="Edit_subject_click"/>
+                        <Button Content="Delete subject" Width="120" Height="25" Margin="5" FontSize="16" VerticalContentAlignment="Center" Click="Delete_subject_click"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
