@@ -143,19 +143,19 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 MessageBox.Show("Please select a student before adding a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             Subject sub = new Subject();
             SubjectWindow subjectWindow = new SubjectWindow(sub);
+
             if (subjectWindow.ShowDialog() == true)
             {
-                if (subjectWindow.NewSubject != null)
-                {
-                    SelectedStudent.Subjects.Add(subjectWindow.NewSubject);
-                }
+                // Use the 'sub' object directly since 'NewSubject' is not defined in SubjectWindow
+                SelectedStudent.Subjects.Add(sub);
             }
         }
 
         public void EditSubject(Subject selectedSubject)
-        {
+        {            
             SubjectWindow editor = new SubjectWindow(selectedSubject);
 
             if (editor.ShowDialog() == true)

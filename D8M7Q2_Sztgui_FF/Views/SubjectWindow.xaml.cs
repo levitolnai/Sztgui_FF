@@ -17,12 +17,22 @@ namespace D8M7Q2_Sztgui_FF.Views
 {
     public partial class SubjectWindow : Window
     {
-        public Subject NewSubject { get; private set; }
+        private Subject _originalSubject;
+        private Subject _tempSubject;
 
         public SubjectWindow(Subject subject)
         {
             InitializeComponent();
-            DataContext = subject;
+
+            _originalSubject = subject;
+            _tempSubject = new Subject
+            {
+                Name = subject.Name,
+                FirstSemester = subject.FirstSemester,
+                SecondSemester = subject.SecondSemester
+            };
+
+            DataContext = _tempSubject;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -33,9 +43,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                 return;
             }
 
-            int? firstSemesterGrade = null;
-            int? secondSemesterGrade = null;
-
             if (!string.IsNullOrWhiteSpace(FirstSemesterTextBox.Text))
             {
                 if (!int.TryParse(FirstSemesterTextBox.Text, out int parsedFirstSemesterGrade) || parsedFirstSemesterGrade < 1 || parsedFirstSemesterGrade > 5)
@@ -43,7 +50,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                     MessageBox.Show("First semester grade must be a number between 1 and 5, or left empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                firstSemesterGrade = parsedFirstSemesterGrade;
             }
 
             if (!string.IsNullOrWhiteSpace(SecondSemesterTextBox.Text))
@@ -53,10 +59,12 @@ namespace D8M7Q2_Sztgui_FF.Views
                     MessageBox.Show("Second semester grade must be a number between 1 and 5, or left empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                secondSemesterGrade = parsedSecondSemesterGrade;
             }
+            _originalSubject.Name = _tempSubject.Name;
+            _originalSubject.FirstSemester = _tempSubject.FirstSemester;
+            _originalSubject.SecondSemester = _tempSubject.SecondSemester;
 
-            NewSubject = new Subject(SubjectNameTextBox.Text, firstSemesterGrade ?? 0, secondSemesterGrade ?? 0);
+
             DialogResult = true;
             Close();
         }
