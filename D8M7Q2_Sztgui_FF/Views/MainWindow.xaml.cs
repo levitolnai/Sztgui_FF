@@ -34,18 +34,6 @@ namespace D8M7Q2_Sztgui_FF
                 vm.AddStudent(newStud);
                 FilteredStudentsListBox.Items.Refresh();
             }
-
-
-            //BindingList<Subject> defaultSubjects = new BindingList<Subject>();
-            //Student newStudent = new Student("DefaultFirstName", "DefaultLastName", "DefaultClassName", defaultSubjects);
-
-            //StudentDetailWindow editor = new StudentDetailWindow(newStudent);
-
-            //if (editor.ShowDialog() == true && this.DataContext is MainWindowViewModel vm)
-            //{
-            //    vm.AddStudent(newStudent);
-            //    FilteredStudentsListBox.Items.Refresh();
-            //}
         }
 
         private void Edit_student_click(object sender, RoutedEventArgs e)
