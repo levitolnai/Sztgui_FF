@@ -38,7 +38,6 @@ namespace D8M7Q2_Sztgui_FF
 
         private void Edit_student_click(object sender, RoutedEventArgs e)
         {
-            //if no student is selected, open a messagebox, if selected, open the editor
             if (FilteredStudentsListBox.SelectedItem == null)
             {
                 MessageBox.Show("Select a student!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -67,7 +66,14 @@ namespace D8M7Q2_Sztgui_FF
 
         private void Edit_subject_click(object sender, RoutedEventArgs e)
         {
-
+            if (DataContext is MainWindowViewModel vm && vm.SelectedSubject != null)
+            {
+                vm.EditSubject(vm.SelectedSubject);
+            }
+            else
+            {
+                MessageBox.Show("Select a subject!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void Delete_subject_click(object sender, RoutedEventArgs e)

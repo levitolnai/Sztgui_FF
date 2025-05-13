@@ -15,16 +15,14 @@ using System.Windows.Shapes;
 
 namespace D8M7Q2_Sztgui_FF.Views
 {
-    /// <summary>
-    /// Interaction logic for SubjectWindow.xaml
-    /// </summary>
     public partial class SubjectWindow : Window
     {
         public Subject NewSubject { get; private set; }
 
-        public SubjectWindow()
+        public SubjectWindow(Subject subject)
         {
             InitializeComponent();
+            DataContext = subject;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

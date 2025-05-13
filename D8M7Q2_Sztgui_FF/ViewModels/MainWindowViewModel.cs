@@ -106,7 +106,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             FilteredStudents.Filter = student =>
             {
                 var s = student as Student;
-                // If "All classes" is selected or SelectedClassName is empty, show all students
                 return s != null && (SelectedClassName == "All classes" || string.IsNullOrEmpty(SelectedClassName) || s.ClassName == SelectedClassName);
             };
 
@@ -144,14 +143,24 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 MessageBox.Show("Please select a student before adding a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            SubjectWindow subjectWindow = new SubjectWindow();
+            Subject sub = new Subject();
+            SubjectWindow subjectWindow = new SubjectWindow(sub);
             if (subjectWindow.ShowDialog() == true)
             {
                 if (subjectWindow.NewSubject != null)
                 {
                     SelectedStudent.Subjects.Add(subjectWindow.NewSubject);
                 }
+            }
+        }
+
+        public void EditSubject(Subject selectedSubject)
+        {
+            SubjectWindow editor = new SubjectWindow(selectedSubject);
+
+            if (editor.ShowDialog() == true)
+            {
+                FilteredStudents.Refresh();
             }
         }
 

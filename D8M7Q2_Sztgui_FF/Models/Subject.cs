@@ -36,6 +36,10 @@ namespace D8M7Q2_Sztgui_FF.Models
             FirstSemester = firstSemester;
             SecondSemester = secondSemester;
         }
+        public Subject()
+        {
+            
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

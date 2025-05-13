@@ -19,7 +19,6 @@ namespace D8M7Q2_Sztgui_FF.Views
 {
     public partial class StudentDetailWindow : Window
     {
-        //public ObservableCollection<string> ClassNames { get; set; }
         public StudentDetailWindow(Student student)
         {
             InitializeComponent();
