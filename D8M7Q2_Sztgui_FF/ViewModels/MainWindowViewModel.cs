@@ -16,6 +16,17 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private Student _selectedStudent;
+        public Student SelectedStudent
+        {
+            get => _selectedStudent;
+            set
+            {
+                _selectedStudent = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _selectedClassName;
         private ObservableCollection<Student> _students;
         private ICollectionView _filteredStudents;
