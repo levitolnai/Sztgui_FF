@@ -61,7 +61,8 @@ namespace D8M7Q2_Sztgui_FF
 
         private void Add_subject_click(object sender, RoutedEventArgs e)
         {
-            
+            var viewModel = DataContext as MainWindowViewModel;
+            viewModel?.AddSubject();
         }
 
         private void Edit_subject_click(object sender, RoutedEventArgs e)

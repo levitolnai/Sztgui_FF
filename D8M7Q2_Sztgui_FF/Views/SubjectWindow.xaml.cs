@@ -35,19 +35,30 @@ namespace D8M7Q2_Sztgui_FF.Views
                 return;
             }
 
-            if (!int.TryParse(FirstSemesterTextBox.Text, out int firstSemesterGrade))
+            int? firstSemesterGrade = null;
+            int? secondSemesterGrade = null;
+
+            if (!string.IsNullOrWhiteSpace(FirstSemesterTextBox.Text))
             {
-                MessageBox.Show("Invalid grade for first semester.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                if (!int.TryParse(FirstSemesterTextBox.Text, out int parsedFirstSemesterGrade) || parsedFirstSemesterGrade < 1 || parsedFirstSemesterGrade > 5)
+                {
+                    MessageBox.Show("First semester grade must be a number between 1 and 5, or left empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                firstSemesterGrade = parsedFirstSemesterGrade;
             }
 
-            if (!int.TryParse(SecondSemesterTextBox.Text, out int secondSemesterGrade))
+            if (!string.IsNullOrWhiteSpace(SecondSemesterTextBox.Text))
             {
-                MessageBox.Show("Invalid grade for second semester.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                if (!int.TryParse(SecondSemesterTextBox.Text, out int parsedSecondSemesterGrade) || parsedSecondSemesterGrade < 1 || parsedSecondSemesterGrade > 5)
+                {
+                    MessageBox.Show("Second semester grade must be a number between 1 and 5, or left empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                secondSemesterGrade = parsedSecondSemesterGrade;
             }
 
-            NewSubject = new Subject(SubjectNameTextBox.Text, firstSemesterGrade, secondSemesterGrade);
+            NewSubject = new Subject(SubjectNameTextBox.Text, firstSemesterGrade ?? 0, secondSemesterGrade ?? 0);
             DialogResult = true;
             Close();
         }
