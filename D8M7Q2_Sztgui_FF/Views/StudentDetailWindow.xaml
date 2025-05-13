@@ -10,15 +10,15 @@
     <Grid>
         <StackPanel>
             <Label Content="First name" FontSize="20"/>
-            <TextBox Text="{Binding FirstName}" MinHeight="30" FontSize="20"/>
-            <Label Content="Second name" FontSize="20"/>
-            <TextBox Text="{Binding LastName}" MinHeight="30" FontSize="20"/>
+            <TextBox x:Name="FNTB" Text="{Binding FirstName}" MinHeight="30" FontSize="20"/>
+            <Label Content="Last name" FontSize="20"/>
+            <TextBox x:Name="LNTB" Text="{Binding LastName}" MinHeight="30" FontSize="20"/>
             <Label Content="Class" FontSize="20"/>
-            <TextBox Text="{Binding ClassName}" MinHeight="30" FontSize="20"/>
+            <TextBox x:Name="CNTB" Text="{Binding ClassName}" MinHeight="30" FontSize="20"/>
             <Label Content="Mother's name" FontSize="20"/>
-            <TextBox Text="{Binding MotherName}" MinHeight="30" FontSize="20"/>
+            <TextBox x:Name="MNTB" Text="{Binding MotherName}" MinHeight="30" FontSize="20"/>
             <Label Content="Address" FontSize="20"/>
-            <TextBox Text="{Binding Address}" MinHeight="30" FontSize="20"/>
+            <TextBox x:Name="ATB" Text="{Binding Address}" MinHeight="30" FontSize="20"/>
             <Button Content="Save" Width="350" Height="30" FontSize="20" Margin="5" Click="SaveButton_Click"/>
         </StackPanel>
     </Grid>
