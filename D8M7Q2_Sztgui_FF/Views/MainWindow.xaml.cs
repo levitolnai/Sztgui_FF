@@ -47,5 +47,28 @@ namespace D8M7Q2_Sztgui_FF
             //    FilteredStudentsListBox.Items.Refresh();
             //}
         }
+
+        private void Edit_student_click(object sender, RoutedEventArgs e)
+        {
+            //if no student is selected, open a messagebox, if selected, open the editor
+            if (FilteredStudentsListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Select a student!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else if (DataContext is MainWindowViewModel vm && FilteredStudentsListBox.SelectedItem is Student selectedStudent)
+            {
+                vm.EditStudent(selectedStudent);
+            }
+            
+        }
+
+        private void Delete_student_click(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext is MainWindowViewModel vm && FilteredStudentsListBox.SelectedItem is Student selectedStudent)
+            {
+                vm.DeleteStudent(selectedStudent);
+            }
+        }
     }
 }

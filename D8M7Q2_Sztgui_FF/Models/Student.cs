@@ -15,13 +15,9 @@ namespace D8M7Q2_Sztgui_FF.Models
         private string lastName;
         private string className;
         private BindingList<Subject> subjects;
+        private string motherName;
+        private string address;
 
-        
-        //public string Id
-        //{
-        //    get => id;
-        //    set { id = value; OnPropertyChanged(nameof(Id)); }
-        //}
         public string FirstName
         {
             get => firstName;
@@ -42,14 +38,17 @@ namespace D8M7Q2_Sztgui_FF.Models
             get => subjects;
             set { subjects = value; OnPropertyChanged(nameof(Subjects)); }
         }
-        //public Student(string firstName, string lastName, string className, BindingList<Subject> list)
-        //{
-        //    Id = Guid.NewGuid().ToString();
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //    ClassName = className;
-        //    Subjects = list;
-        //}
+        public string MotherName
+        {
+            get => motherName;
+            set { motherName = value; OnPropertyChanged(nameof(MotherName)); }
+        }
+        public string Address
+        {
+            get => address;
+            set { address = value; OnPropertyChanged(nameof(Address)); }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

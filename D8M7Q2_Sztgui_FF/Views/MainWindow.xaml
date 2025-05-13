@@ -8,60 +8,74 @@
         Title="MainWindow" Height="700" Width="1400">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" >
-            <Button  Content="Add student" Height="30" Margin="5" FontSize="16" Click="Add_student_click"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                <Button Content="Add student" Width="160" Height="30" Margin="5" FontSize="20" Click="Add_student_click"/>
+                <Button Content="Edit student" Width="160" Height="30" Margin="5" FontSize="20" Click="Edit_student_click"/>
+                <Button Content="Delete student" Width="160" Height="30" Margin="5" FontSize="20" Click="Delete_student_click"/>
+            </StackPanel>
             <ComboBox x:Name="ClassSelector" Width="200" Height="30" Margin="5"
                 ItemsSource="{Binding ClassNames}" 
                 SelectedItem="{Binding SelectedClassName, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
-
-            <ListBox x:Name="FilteredStudentsListBox" Height="500"
-               ItemsSource="{Binding FilteredStudents}" HorizontalContentAlignment="Stretch" Margin="0,50,0,0">
-               <ListBox.ItemContainerStyle>
-                   <Style TargetType="ListBoxItem">
-                       <Setter Property="BorderThickness" Value="1" />
-                       <Setter Property="BorderBrush" Value="Black" />
-                       <Setter Property="Margin" Value="5" />
-                   </Style>
-               </ListBox.ItemContainerStyle>
-               <ListBox.ItemTemplate>
-                   <DataTemplate>
-                       <Grid>
-                           <Grid.ColumnDefinitions>
-                               <ColumnDefinition Width="*" />
-                               <ColumnDefinition Width="Auto" />
-                           </Grid.ColumnDefinitions>
-                           <Label Content="{Binding FullName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Grid.Column="0"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ListBox x:Name="FilteredStudentsListBox" Height="560"
+               ItemsSource="{Binding FilteredStudents}" HorizontalContentAlignment="Stretch" Margin="5">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="Margin" Value="5" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{Binding FullName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Grid.Column="0"/>
                             <TextBlock Text="{Binding ClassName, StringFormat='{}Class: {0}'}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Grid.Column="1"/>
-                       </Grid>
-                   </DataTemplate>
-               </ListBox.ItemTemplate>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
 
-        <!--<ListBox x:Name="lbox_left" Grid.Column="0"
-         ItemsSource="{Binding Students}"
-         HorizontalContentAlignment="Stretch" Margin="0,50,0,0">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="BorderThickness" Value="1" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="Margin" Value="5" />
-                </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Label Content="{Binding FirstName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20"/>
-                        <Label Content="{Binding LastName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
-                        <Label Content="{Binding ClassName}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="20"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
+
+        <TabControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+            <TabItem Header="Student Details">
+                <StackPanel>
+                    <Label Content="First name" FontSize="20"/>
+                    <TextBox Text="{Binding SelectedStudent.FirstName}" MinHeight="30" FontSize="20"/>
+                    <Label Content="Second name" FontSize="20"/>
+                    <TextBox Text="{Binding SelectedStudent.LastName}" MinHeight="30" FontSize="20"/>
+                    <Label Content="Class" FontSize="20"/>
+                    <TextBox Text="{Binding SelectedStudent.ClassName}" MinHeight="30" FontSize="20"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Class Details">
+                <StackPanel>
+                    <Label Content="Class name" FontSize="20"/>
+                    <TextBox Text="{Binding SelectedClass.ClassName}" MinHeight="30" FontSize="20"/>
+                    <Label Content="Number of students" FontSize="20"/>
+                    <TextBox Text="{Binding SelectedClass.NumberOfStudents}" MinHeight="30" FontSize="20"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+
+
     </Grid>
 </Window>
