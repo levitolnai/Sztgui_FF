@@ -10,13 +10,12 @@ namespace D8M7Q2_Sztgui_FF.Models
 {
     public class Student : INotifyPropertyChanged
     {
-        //private string id;
-        private string firstName;
-        private string lastName;
-        private string className;
-        private BindingList<Subject> subjects;
-        private string motherName;
-        private string address;
+        private string firstName = "";
+        private string lastName = "";
+        private string className = "";
+        private BindingList<Subject> subjects = new BindingList<Subject>();
+        private string motherName = "";
+        private string address = "";
 
         public string FirstName
         {
@@ -48,14 +47,12 @@ namespace D8M7Q2_Sztgui_FF.Models
             get => address;
             set { address = value; OnPropertyChanged(nameof(Address)); }
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
         public string FullName
         {
             get => $"{FirstName} {LastName}";
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

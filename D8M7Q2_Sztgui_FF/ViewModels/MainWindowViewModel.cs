@@ -40,7 +40,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
         private string _selectedClassName;
         private ObservableCollection<Student> _students;
         private ICollectionView _filteredStudents;
-
         public ObservableCollection<string> ClassNames { get; set; }
         public ObservableCollection<Student> Students
         {
@@ -51,7 +50,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public ICollectionView FilteredStudents
         {
             get => _filteredStudents;
@@ -61,7 +59,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public string SelectedClassName
         {
             get => _selectedClassName;
@@ -72,6 +69,8 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 ApplyFilter();
             }
         }
+
+
         public MainWindowViewModel()
         {
             Students = new ObservableCollection<Student>()
@@ -86,7 +85,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             new Student() { ClassName = "8", FirstName = "Benjamin", LastName = "Nelson", Subjects = new BindingList<Subject> { new Subject("Math", 5, 5), new Subject("Physics", 4, 4), new Subject("Chemistry", 3, 3) }, MotherName = "Sophia Nelson", Address = "7635 Pécs, Táncsics Mihály utca 2." },
             new Student() { ClassName = "1", FirstName = "Charlotte", LastName = "Carter", Subjects = new BindingList<Subject> { new Subject("English", 5, 4), new Subject("Biology", 4, 3), new Subject("History", 5, 5), new Subject("Geography", 3, 4) }, MotherName = "Emily Carter", Address = "7627 Pécs, Deák Ferenc utca 6." },
             new Student() { ClassName = "2", FirstName = "Lucas", LastName = "Mitchell", Subjects = new BindingList<Subject> { new Subject("Math", 4, 4), new Subject("Physics", 5, 5) }, MotherName = "Sophia Mitchell", Address = "7636 Pécs, Bartók Béla utca 10." },
-
             };
 
             ClassNames = new ObservableCollection<string>
@@ -96,7 +94,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             SelectedClassName = "All classes";
 
             FilteredStudents = CollectionViewSource.GetDefaultView(Students);
-
         }
 
         public void ApplyFilter()
@@ -112,12 +109,10 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             FilteredStudents.Refresh();
         }
 
-
         public void AddStudent(Student stud)
         {
             Students.Add(stud);
         }
-
         public void EditStudent(Student student)
         {
             StudentDetailWindow editor = new StudentDetailWindow(student);
@@ -140,7 +135,7 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
         {
             if (SelectedStudent == null)
             {
-                MessageBox.Show("Please select a student before adding a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Select a student before adding a subject.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -149,11 +144,9 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
 
             if (subjectWindow.ShowDialog() == true)
             {
-                // Use the 'sub' object directly since 'NewSubject' is not defined in SubjectWindow
                 SelectedStudent.Subjects.Add(sub);
             }
         }
-
         public void EditSubject(Subject selectedSubject)
         {            
             SubjectWindow editor = new SubjectWindow(selectedSubject);
@@ -163,7 +156,6 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
                 FilteredStudents.Refresh();
             }
         }
-
         public void DeleteSubject()
         {
             if (SelectedStudent != null && SelectedSubject != null)
@@ -176,7 +168,7 @@ namespace D8M7Q2_Sztgui_FF.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

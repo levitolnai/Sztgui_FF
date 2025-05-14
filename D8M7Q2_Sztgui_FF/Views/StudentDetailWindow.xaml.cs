@@ -25,7 +25,6 @@ namespace D8M7Q2_Sztgui_FF.Views
             DataContext = student;
             
         }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(FNTB.Text) || string.IsNullOrWhiteSpace(LNTB.Text) || string.IsNullOrWhiteSpace(CNTB.Text) || string.IsNullOrWhiteSpace(MNTB.Text) || string.IsNullOrWhiteSpace(ATB.Text))
@@ -33,7 +32,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                 MessageBox.Show("All fields must be filled.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
             DialogResult = true;
             Close();
         }

@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace D8M7Q2_Sztgui_FF.Models
 {
-    public class Subject: INotifyPropertyChanged
+    public class Subject : INotifyPropertyChanged
     {
-        private string name;
+        private string name = ""; 
         private int? firstSemester = null;
         private int? secondSemester = null;
-
-
 
         public string Name
         {
@@ -28,21 +26,21 @@ namespace D8M7Q2_Sztgui_FF.Models
         public int? SecondSemester
         {
             get => secondSemester;
-            set { secondSemester = value; OnPropertyChanged(nameof(SecondSemester)); } 
+            set { secondSemester = value; OnPropertyChanged(nameof(SecondSemester)); }
         }
+
         public Subject(string name, int firstSemester, int secondSemester)
         {
             Name = name;
             FirstSemester = firstSemester;
             SecondSemester = secondSemester;
         }
+
         public Subject()
         {
-            
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
     }
 }

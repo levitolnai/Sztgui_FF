@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:D8M7Q2_Sztgui_FF.Views"
         mc:Ignorable="d"
-        Title="SubjectWindow" Height="450" Width="800">
+        Title="SubjectWindow" Height="300" Width="400">
     <Grid>
         <StackPanel>
             <Label Content="Subject name" FontSize="20"/>
@@ -14,7 +14,7 @@
             <TextBox Text="{Binding FirstSemester}" MinHeight="30" FontSize="20" x:Name="FirstSemesterTextBox"/>
             <Label Content="Second semester" FontSize="20"/>
             <TextBox Text="{Binding SecondSemester}" MinHeight="30" FontSize="20" x:Name="SecondSemesterTextBox"/>
-            <Button Content="Save" Width="350" Height="30" FontSize="20" Margin="5" Click="SaveButton_Click"/>
+            <Button Content="Save" Width="150" Height="40" FontSize="25" Margin="10" Click="SaveButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

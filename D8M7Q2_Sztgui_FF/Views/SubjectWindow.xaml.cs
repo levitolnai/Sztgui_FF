@@ -23,7 +23,6 @@ namespace D8M7Q2_Sztgui_FF.Views
         public SubjectWindow(Subject subject)
         {
             InitializeComponent();
-
             _originalSubject = subject;
             _tempSubject = new Subject
             {
@@ -31,7 +30,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                 FirstSemester = subject.FirstSemester,
                 SecondSemester = subject.SecondSemester
             };
-
             DataContext = _tempSubject;
         }
 
@@ -42,7 +40,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                 MessageBox.Show("Subject name cannot be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
             if (!string.IsNullOrWhiteSpace(FirstSemesterTextBox.Text))
             {
                 if (!int.TryParse(FirstSemesterTextBox.Text, out int parsedFirstSemesterGrade) || parsedFirstSemesterGrade < 1 || parsedFirstSemesterGrade > 5)
@@ -51,7 +48,6 @@ namespace D8M7Q2_Sztgui_FF.Views
                     return;
                 }
             }
-
             if (!string.IsNullOrWhiteSpace(SecondSemesterTextBox.Text))
             {
                 if (!int.TryParse(SecondSemesterTextBox.Text, out int parsedSecondSemesterGrade) || parsedSecondSemesterGrade < 1 || parsedSecondSemesterGrade > 5)
@@ -63,7 +59,6 @@ namespace D8M7Q2_Sztgui_FF.Views
             _originalSubject.Name = _tempSubject.Name;
             _originalSubject.FirstSemester = _tempSubject.FirstSemester;
             _originalSubject.SecondSemester = _tempSubject.SecondSemester;
-
 
             DialogResult = true;
             Close();

@@ -23,10 +23,11 @@
                 <Button Content="Edit student" Width="160" Height="30" Margin="5" FontSize="20" Click="Edit_student_click"/>
                 <Button Content="Delete student" Width="160" Height="30" Margin="5" FontSize="20" Click="Delete_student_click"/>
             </StackPanel>
-            <ComboBox x:Name="ClassSelector" Width="200" Height="30" Margin="5"
+            <ComboBox x:Name="ClassSelector" Width="200" Height="35" Margin="5" FontSize="20" HorizontalContentAlignment="Center"
               ItemsSource="{Binding ClassNames}" 
-              SelectedItem="{Binding SelectedClassName, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
+              SelectedItem="{Binding SelectedClassName, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+        
         <StackPanel Grid.Column="0" Grid.Row="1">
             <ListBox x:Name="FilteredStudentsListBox" Height="560"
              ItemsSource="{Binding FilteredStudents}" 
@@ -54,7 +55,6 @@
             </ListBox>
         </StackPanel>
 
-
         <TabControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="20">
             <TabItem Header="Student Details" FontSize="18">
                 <StackPanel>
@@ -70,15 +70,18 @@
                     <TextBlock Text="{Binding SelectedStudent.Address, UpdateSourceTrigger=PropertyChanged}" MinHeight="30" FontSize="18" Margin="50, 0, 50, 5"/>
                 </StackPanel>
             </TabItem>
+            
             <TabItem Header="Student's subjects" FontSize="18">
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="4*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <DataGrid ItemsSource="{Binding SelectedStudent.Subjects}" 
                             AutoGenerateColumns="False" 
+                            CanUserAddRows="False"
+                            IsReadOnly="True"
                             HorizontalAlignment="Left"
                             SelectedItem="{Binding SelectedSubject, Mode=TwoWay}"
                             Grid.Column="1" 

@@ -35,7 +35,6 @@ namespace D8M7Q2_Sztgui_FF
                 FilteredStudentsListBox.Items.Refresh();
             }
         }
-
         private void Edit_student_click(object sender, RoutedEventArgs e)
         {
             if (FilteredStudentsListBox.SelectedItem == null)
@@ -49,7 +48,6 @@ namespace D8M7Q2_Sztgui_FF
             }
             
         }
-
         private void Delete_student_click(object sender, RoutedEventArgs e)
         {
             if (this.DataContext is MainWindowViewModel vm && FilteredStudentsListBox.SelectedItem is Student selectedStudent)
@@ -58,12 +56,12 @@ namespace D8M7Q2_Sztgui_FF
             }
         }
 
+
         private void Add_subject_click(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as MainWindowViewModel;
             viewModel?.AddSubject();
         }
-
         private void Edit_subject_click(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainWindowViewModel vm && vm.SelectedSubject != null)
@@ -75,7 +73,6 @@ namespace D8M7Q2_Sztgui_FF
                 MessageBox.Show("Select a subject!", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
         private void Delete_subject_click(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as MainWindowViewModel;
